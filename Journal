@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Digital Methods: My Learning Journal}
+\author{Andreas Bennetzen Bierbaum}
+\date{Autumn 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Today's Date}
+
+\subsection{Thoughts / Intentions}
+\subsection{Action}
+\subsection{Results}
+\subsection{Final Thoughts}
+
+
+
+\pagebreak{}
+\section{11/03/2019}
+\subsection{Thoughts and / Intentions}
+\textbf{Word list Exercise from 1st lecture 31/10/2019 }
+\newline
+\newline
+\textbf{21:08:} I'm reading through the different meta-characters from the guide we had been given
+\newline
+\newline
+\textbf{21:15} Having little to no success with making much sense i started using google and eventually started putting the various meta-characters into the Regular Expressions in order to see what effect it would have21
+\newline
+\newline
+\textbf{21:25} After having used the all of the meta-characters as well as some googling back and fourth i believe i have found the solution which will be explained in the \textbf{Action Section}
+
+
+
+\subsection{Action}
+\newline
+\newline
+- Wordlist for R and Voyant exercises
+\newline
+\newline
+- I Opened the the respective word lists which had to be converted from either Voyant to R or R to Voyant
+\newline
+\newline
+\textbf{Stop-word list from R (") and (,) to be used to remove the unwanted characters}
+After having googled methods  in regex and having some success with it i started experimenting i eventually got to the parenthesis which worked as a capture group for the inverted commas/quotation signs, i copy pasted the text back in now having removed the inverted commas, however still needing the remove the comma, i used the same method with the parenthesis as before using it as a capture group in order to remove the comma) 
+After being at the lecture i was taught that out that using the parenthesis wasn't necessary.  Just simply putting the character you want removed into the regular expression line in order to remove it.
+\newline
+\newline
+\textbf{Stop word list for Voyant backslash  b and the dollar sign meta-characters}
+I played around with the various meta-characters in order to see  what kind of influence it would have on the test string of stop words, i eventually figured out that using backslash b, would highlight both ends of all of the words and then allow me to add inverted commas in front and behind the words in the stop list at the same time using the substitution line to add the character i want. However i could not figure out how to keep the text and also add the comma at the same time to the stop list, which is also needed for the Voyant stop word list, so i ended up copy pasting the text back into regex.
+Adding the comma after having already added the inverted commas, I used the dollar sign meta-character as it is an “anchor” which asserts the position at the end of the line. So it allowed me to add the character that i wanted at the end the line.I copied the text and asserted myself that it was the right way to do it, at least for now. I'm still having trouble with æøå as it seems regex recognizes or at least handles them as individual words within other words in the stop word list, probably due to the fact that regex does not recognize these characters.
+\subsection{Results}
+Having solved both of the conversions of the respective stop word lists on my own and with a little help from google
+\subsection{Final Thoughts}
+Having solved the homework for \textbf{Thursday lecture 07/11/2019} i felt relieved, as well as having a feeling of having taken a step in the right direction with the Digital Methods course and working with the first program \textbf{Regular Expressions} in a successful way
+\newpage
+\section{11/10/2019}
+\newline
+
+\subsection{Thoughts and Intentions}
+\textbf{Working with OpenRefine, Thursday Lecture 11/07/2019 and finding my own Data set for the next lecture 11/14/2019}
+\newline
+Finding the data set \textbf{13/11/2019}
+\newline
+\newline
+\textbf{21:25} I started looking at the suggestions Max had put up in historical-datasets Slack channel and went with one of the first ones \textbf{Plenary proceedings in Folketinget} which consists of 48 years of text-data \newline \textbf{URL: https://loar.kb.dk/handle/1902/4281}
+\newline
+\newline
+\textbf{21:28} I looked around the website and found the recent submission and chose the first one called \textbf{Datasprint2019 Wilson Data sets}
+\newline
+\newline
+\textbf{21:31} I chose the first Data set of the five presented to me, the folder consists of three different Data sets "End of the Cold War", "German Reunification" and "The Berlin Wall" 
+\newline
+\newline
+\textbf{21:33} I ended up choosing "End of the Cold War" 
+
+\subsection{Action}
+I'm trying to put my Data set "End of the Cold War" into OpenRefine. I successfully implemented by Data set into the OpenRefine browser.  I'm currently playing around with some of the instruments OpenRefine offers that we used in the lecture of \textbf{11/07/2019} I quickly figured that using commas (CSV) was the way to go with this Data set
+\newline
+\newline
+ I started experimenting with the Create Project but quickly gave up, wanting to ask for advice in the next lecture instead of continuing 
+\subsection{Results}
+I did not get any particular results as i did not know how to specifically work with this data set
+\subsection{Final Thoughts}
+\textbf{11/14/2019} after looking at the data set i have concluded that it is not the one that i will be using and will therefor be finding another one before my study-guidance next week. 
+
+\pagebreak
+
+\section{14/11/2019 }
+
+\subsection{Thoughts / Intentions}
+\textbf{Working/Installing Git(Bash)}
+\newline
+Receiving basic instructions in Git(bash)  the LS command will show my PC's local disc then into this computers  users and then my specific user profile just called by my name "Andreas Bierbaum" and then sorts them with meta-characters for each of the different folders etc. 
+
+\subsection{Action}
+\textbf{Navigating in Git and exercises}
+Using the basic meta-characters in Git i've learned somewhat to navigate in my computer by using, for example typing cd \textbf{~/desktop/data-shell} i go directly into my data-shell folder if which is on my desktop.
+I also found out that due to me making my username contain spaces in between my first and last name i can't use the cd /c/Users/Andreas Bierbaum/ as Git wont recognize it, however i can use the "tilde" meta-character as a replacement for my username. If i am in the tilde/desktop/data-shell and i type cd .. i go back into  tilde/desktop/. However if i want to get into other folders which contain spaces tilde/desktop/data-shell/myfolders andreas/ for example i would have to hit the tab button once i type "myfolder" to get there. 
+\newline
+\newline
+in order to create a text document within the folder i want, for example \textbf{~/desktop/data-shell/thesis} i type \textbf{nano draft.txt} where i can write whatever, save the file afterwards and name it whatever i want
+\newline
+\newline
+if i type cp draft1.txt i will copy the document where and can name it by doing this cp draft1.txt  (Name of the new document), this document will be placed into the folder that i am currently in ~/desktop/data-shell/thesis for example. It will now contain both .txt files. In order to remove them again i can use the rm command
+\newline
+\newline
+I also added myself into the config by username and email by typing
+git config --global user.name "AndreasBierbaum" and git config --global user.email "Bierbaum123@gmail.com"
+ I will be able to see my user and e-mail list by using git config --list
+
+\subsection{Results}
+I ended up having followed and understood the hands-on sessions of using Gitbash, it gave me a further understanding of how to work with my computer, as to how to unzip files as well and how it it can optimize effectiveness with my work in the future
+
+\subsection{Final Thoughts}
+I feel like i still have to work a lot with Git in order to understand and use it fully, however i will implement it's effectiveness into my work if given the chance and my ability to use it.
+\newpage
+
+
+
+\section{(27-11-2019)} Git Bash and Git Hub and homework exercises prior to the lecture 2-12-2019
+\subsection{Thoughts / Intentions}
+\subsection{Action}
+\subsection{Results}
+\subsection{Final Thoughts}
+\newpage
+
+\section{28-11-2019 Introducing dplyr, tidyverse and Starting with DATA in RStudio}
+\subsection{Thoughts / Intentions}
+R for Social Scientists: Working with RStudio and presentation of the SAFI Data.
+Learning to export/upload csv files into RStudio and using various commands to present the Data.
+Getting tidyverse installed with RStudio and working with it's extended command package
+\subsection{Action}
+By using \textbf{interviews <- read.csv("data/SAFI-clean.csv")} i can export the SAFI data file into RStudio, naming it "interviews", and therefor i'm able to apply the various amounts of scripts to the dataset in order to present the dataset the way we/i want to.
+For example by either filtering, selecting and mutate the dataset by using the commands \textbf{select(): 
+filter():  mutate()} and inserting the different columns and or conditions into the paranthesis, such as filtering by village, no-membrs showing the members of the household. (See more examples in the Datacarpentry) Specific example of a script used in the lecture: \textbf{filter(interviews, village == "God")} and \textbf{select(interviews, village, no-membrs, years-liv)}. By using head(interviews) i can see how the different scripts influence my dataset ongoing.
+\newline 
+Getting Tidyverse installed in order to use more commands/scripts to explicitly show the properties of the SAFI Dataset. By using the\textbf{ install.packages("tidyverse")} RStudio gets installed by itself and is ready for use after approximately ten to fifteen minutes. 
+
+\subsection{Results}
+The results of the lecture and introduction of RStudio with data and tidyverse is a basic understanding how to use the scripts in order to explicitly show what i want from the dataset in order to illuminate the thesis i want from it and specifying possible differences, in this case the African villages and their differences of how many family members they have or what they own in the villages.
+
+\subsection{Final Thoughts}
+I hope to be able to find a dataset on which i can apply the scripts and also that i have the understanding of the subject that i end up choosing as well as being use the scripts in a constructive matter in order to present the dataset in the way that i wish to illuminate my thesis 
+
+\newpage
+\section{05-12-2019}
+\subsection{Thoughts / Intentions}
+\subsection{Action}
+\subsection{Results}
+\subsection{Final Thoughts}
+}
+
+\end{document}
