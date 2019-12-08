@@ -21,7 +21,6 @@ read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/cen
 read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/censuses/1860/census-1860-normalized.csv") -> Censuses_1860
 ```
 # Vizualising the data
-
 ```{r}
 head(Censuses_1787)
 ```
