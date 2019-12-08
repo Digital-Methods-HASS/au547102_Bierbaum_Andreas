@@ -1,13 +1,14 @@
 ---
-title: "DigitalMethods_Censuses_1787_and_1860"
+title: "DigitalMethods Censuses 1787 and 1860"
 author: "Andreas Bennetzen Bierbaum"
 date: "10/1/2020"
-output: word_document
+output:
+  word_document: default
 ---
-#Problemformulering
-This project will focus on the question of whether there are differences in the censuses regarding the data concerning the marital statuses of the censuses. The data has been gathered from the respective censuses of 1787 and 1860. 
+# Statement
+This project will focus on the question of whether there are differences in the censuses regarding the data concerning the marital statuses of the censuses. The data has been gathered from the respective censuses of 1787 and 1860 from Aarhus Stadsarkiv.
+
 # Loading/Installing the packages
-Indsæt om pakkerne her. 
 
 ```{r}
 library(tidyverse)
@@ -15,12 +16,21 @@ library(leaflet)
 ```
 
 # Loading the data
-Indsæt tekst om dataen (forklar hvad det viser og omkring dens licens) ( Open Data Commons Public Domain )
 ```{r}
 read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/censuses/1787/census-1787-normalized.csv") -> Censuses_1787
 read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/censuses/1860/census-1860-normalized.csv") -> Censuses_1860
 ```
 # Vizualising the data
+
+```{r}
+head(Censuses_1787)
+```
+
+```{r}
+head(Censuses_1860)
+```
+
+
 ```{r}
 Censuses_1787 %>%
   count(civilstand, sort = TRUE) %>%
@@ -59,7 +69,7 @@ Censuses_1787 %>%
   coord_flip() +
        labs(x = "Count",
       y = "Marital statuses (unmarried, married and male-widow)",
-      title = "Marital Statuses in 1787 sorted gender: Male")
+      title = "Marital Statuses in 1787 sorted by gender: Male")
 
 ```
 ```{r}
@@ -103,6 +113,3 @@ Censuses_1860 %>%
       labs(x = "Count",
       y = "Marital statuses (unmarried, married and male-widow)",
       title = "Marital Statuses in 1860 by gender: Male")
-```
-# Conclusion
-
