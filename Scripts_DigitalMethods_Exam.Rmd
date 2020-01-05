@@ -1,0 +1,253 @@
+---
+title: "DigitalMethods Censuses 1787 and 1860"
+author: "Andreas Bennetzen Bierbaum"
+date: "10/1/2020"
+output:
+  word_document: default
+---
+# Statement
+This project will focus on the question of whether there are differences in the censuses regarding the data concerning the marital statuses of the censuses. The data has been gathered from the respective censuses of 1787 and 1860 from Aarhus Stadsarkiv.
+
+# Loading/Installing the packages
+Indsæt om pakkerne her. 
+
+```{r}
+library(tidyverse)
+```
+
+# Loading the data
+Indsæt tekst om dataen (forklar hvad det viser og omkring dens licens) ( Open Data Commons Public Domain )
+```{r}
+read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/censuses/1787/census-1787-normalized.csv") -> Censuses_1787
+read.csv("https://raw.githubusercontent.com/aarhusstadsarkiv/datasets/master/censuses/1860/census-1860-normalized.csv") -> Censuses_1860
+```
+# Vizualising the data
+
+```{r}
+head(Censuses_1787)
+```
+
+```{r}
+head(Censuses_1860)
+```
+
+
+```{r}
+Censuses_1787 %>%
+  count(civilstand, sort = TRUE) %>%
+  top_n(4) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of men and women",
+      title = "Marital Statuses in 1787 men and women")
+```
+```{r}
+Censuses_1860 %>%
+  count(civilstand, sort = TRUE) %>%
+  top_n(4) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of men and women",
+      title = "Marital Status in 1860 men and women")
+```
+```{r}
+Censuses_1787 %>%
+  filter(koen == "mand") %>%
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+       labs(x = "Marital Status",
+      y = " Total amount of men",
+      title = "Marital statuses in 1787 sorted by gender: Men")
+
+```
+```{r}
+Censuses_1787 %>%
+  filter(koen == "kvinde") %>%
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital status",
+      y = "Total amount of Women",
+      title = "Marital Statuses in 1787 sorted by gender: Women")
+```
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "mand" )%>% 
+  filter(alder < 30) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(2) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of men below the age of 30",
+      title = "Marital Statuses in 1860 sorted by gender below the age of 30: Men")
+```
+
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "mand") %>%
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital status",
+      y = "Total amount of men",
+      title = "Marital Statuses in 1860 sorted by gender: Men")
+```
+
+
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "mand") %>%
+  filter(alder < 30) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(2) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of men below the age of 30",
+      title = "Marital Statuses in 1860 sorted by gender below the age of 30: Men")
+
+```
+
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "kvinde") %>%
+  filter(alder < 30) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(2) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of women below the age of 30",
+      title = "Marital Statuses in 1860 sorted by gender below the age of 30: Women")
+```
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "mand") %>%
+  filter(alder > 35) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Martial Status",
+      y = "Total amount of men above the age of 35",
+      title = "Marital Statuses in 1860 sorted by gender above the age of 35: Men")
+```
+
+```{r}
+Censuses_1860 %>% 
+  filter(koen == "kvinde") %>%
+  filter(alder > 35) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of women above the age of 35",
+      title = "Marital Statuses in 1860 sorted by gender above the age of 35: Women")
+```
+```{r}
+Censuses_1787 %>% 
+  filter(koen == "mand" )%>% 
+  filter(alder < 30) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(2) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of men below the age of 30",
+      title = "Marital Statuses in 1787 sorted by gender below the age of 30: Men")
+```
+```{r}
+Censuses_1787 %>% 
+  filter(koen == "kvinde") %>%
+  filter(alder < 30) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(2) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Marital Status",
+      y = "Total amount of women below the age of 30",
+      title = "Marital Statuses in 1787 sorted by gender below the age of 30: Women")
+```
+
+
+
+
+
+
+```{r}
+Censuses_1787 %>% 
+  filter(koen == "mand") %>%
+  filter(alder > 35) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Martial Status",
+      y = "Total amount of men above the age of 35",
+      title = "Marital Statuses in 1787 sorted by gender above the age of 35: Men")
+```
+
+
+
+```{r}
+Censuses_1787 %>% 
+  filter(koen == "kvinde") %>%
+  filter(alder > 35) %>% 
+  count(civilstand, sort = TRUE) %>%
+  top_n(3) %>%
+  mutate(civilstand = reorder(civilstand, n)) %>%
+  ggplot(aes(x = civilstand, y = n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+      labs(x = "Martial Status",
+      y = "Total amount of Women above the age of 35",
+      title = "Marital Statuses in 1787 sorted by gender above the age of 35: Women")
+```
